@@ -40,6 +40,23 @@ legend(x="topright",lty=c(2,3),legend=c("Mean", "Median"))
 
 ![](PA1_template_files/figure-html/stepsperday-1.png)<!-- -->
 
+
+```r
+mean(steptotal)
+```
+
+```
+## [1] 9354.23
+```
+
+```r
+median(steptotal)
+```
+
+```
+## [1] 10395
+```
+
 ## What is the average daily activity pattern?
 
 The below plot shows a time series of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
@@ -55,8 +72,14 @@ axis(1,at=myseq,labels(stepmeanbyinterval)[[1]][myseq])
 
 ![](PA1_template_files/figure-html/averagedailypattern-1.png)<!-- -->
 
+
 ```r
 maxstepinterval <- labels(stepmeanbyinterval[match(max(stepmeanbyinterval),stepmeanbyinterval)])
+maxstepinterval
+```
+
+```
+## [1] "835"
 ```
 
 On average, across all days in the dataset, interval 835 contains the maximum number of steps.
@@ -68,6 +91,11 @@ The presence of missing values may introduce bias into some calculations or summ
 
 ```r
 howmanyNAs <- length(activity[is.na(activity$steps)==TRUE,1])
+howmanyNAs
+```
+
+```
+## [1] 2304
 ```
 
 In fact, there are 2304 of days/ intervals where there are missing values.
@@ -117,6 +145,23 @@ legend(x="topright",lty=c(2,3,2,3),col=c(1,1,"gray","gray"),
 ```
 
 ![](PA1_template_files/figure-html/missingvalues-1.png)<!-- -->
+
+
+```r
+mean(steptotalNAfilled)
+```
+
+```
+## [1] 10821.21
+```
+
+```r
+median(steptotalNAfilled)
+```
+
+```
+## [1] 11015
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
